@@ -3,8 +3,10 @@ import styled from 'styled-components'
 import ClearIcon from '@mui/icons-material/Clear';
 import MenuIcon from '@mui/icons-material/Menu';
 
+
 function Header() {
   const [burgerOpen, setBurgerOpen] = useState(false)
+  
   return (
     <Container>
       <a href="">
@@ -23,12 +25,12 @@ function Header() {
         <a href="#">Shop</a>
         <a href="#">Tesla Account</a>
         <CustomMenu >
-          <button onClick={}>=</button>
+          <button onClick={() => setBurgerOpen(true)}>=</button>
         </CustomMenu>
       </RightMenu>
-      <BurgerNav show={burgerStatus}>
+      <BurgerNav show={burgerOpen}>
         <CloseWrapper>
-          <CustomClose />
+          <CustomClose onClick={() => setBurgerOpen(false)} />
         </CloseWrapper>
 
         <li><a href="#">Existing Inventory</a></li>
@@ -122,13 +124,14 @@ display:flex;
 flex-direction:column;
 justify-content:flex-start;
 text-align:start;
-transform:${props => props.show ? ' translateX(100%)' : 'translateX(100%)'};
+transform:${props => props.show ? ' translateX(0)' : 'translateX(100%)'};
+transition: transform 0.2s ;
 li{
   padding: 15px 5px;
-  border - bottom: 1px solid rgba(0, 0, 0, .2);
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
 
 a{
-    font - weight: 600;
+    font-weight: 600;
   }
 }
 
@@ -142,7 +145,8 @@ cursor: pointer;
 
 const CloseWrapper = styled.div`
 display: flex;
-justify - content: flex - end;
+justify-content: flex-end;
+
 
 
 
